@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Python Pro - Cambio Climático</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<!-- Badge del proyecto -->
+<div style="position: fixed; top: 10px; right: 10px; background-color: #2e8b57; color: white; padding: 10px 15px; border-radius: 5px; font-weight: bold; font-size: 14px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 1000;">
+    ✨ Proyecto final, Python pro!
+</div>
+
+<!-- Título principal de la página -->
+<div style="text-align: center; margin-bottom: 30px; padding-top: 20px;">
+    <h1 style="font-size: 36px; color: #2e8b57; margin-bottom: 10px;">Python Pro - Cambio Climático</h1>
+    <p style="color: #555; font-style: italic;">Aprende sobre el cambio climático</p>
+</div>
+
+<h1>¿Qué es el cambio climático?</h1>
+<img src="https://picsum.photos/300/200?random=1" alt="Tierra y cambio climático" style="width: 300px; height: 200px; border-radius: 8px;">
+<p>
+El cambio climático se refiere a las variaciones a largo plazo del clima del planeta,
+provocadas principalmente por actividades humanas.
+</p>
+<p>
+Estas actividades incluyen la quema de combustibles fósiles, la deforestación y la agricultura intensiva,
+que aumentan la concentración de gases de efecto invernadero en la atmósfera.
+Estos gases atrapan el calor del sol, lo que lleva a un aumento de las temperaturas globales,
+alterando patrones climáticos y provocando fenómenos meteorológicos extremos.
+Las consecuencias del cambio climático incluyen el derretimiento de los glaciares,
+la elevación del nivel del mar, cambios en los ecosistemas y amenazas a la biodiversidad
+y la seguridad alimentaria.
+Abordar el cambio climático requiere esfuerzos globales para reducir las emisiones de gases de efecto invernadero
+y adaptarse a sus impactos inevitables.
+</p>
+
+<h2>Causas principales</h2>
+<img src="https://picsum.photos/300/200?random=2" alt="Emisiones de CO2 de una fábrica" style="width: 300px; height: 200px; border-radius: 8px;">
+<p>
+<strong>Dióxido de carbono (CO₂):</strong> Producto de la quema de combustibles fósiles como el carbón, petróleo y gas natural.
+</p>
+<p>
+<strong>Metano (CH₄):</strong> Generado por la ganadería, la descomposición de residuos y la extracción de combustibles fósiles.
+</p>
+<p>
+<strong>Óxido nitroso (N₂O):</strong> Emitido por procesos agrícolas e industriales.
+</p>
+
+<h2>Impactos del cambio climático</h2>
+<img src="https://picsum.photos/300/200?random=3" alt="Glaciar derritiéndose" style="width: 300px; height: 200px; border-radius: 8px;">
+<ul style="margin-left: 20px; margin-bottom: 15px;">
+<li>Aumento de temperaturas globales</li>
+<li>Eventos climáticos extremos más frecuentes (huracanes, tormentas, sequías)</li>
+<li>Derretimiento de glaciares y capas de hielo</li>
+<li>Aumento del nivel del mar</li>
+<li>Pérdida de hábitats y biodiversidad</li>
+<li>Amenazas a la seguridad alimentaria</li>
+<li>Impactos en la salud humana</li>
+</ul>
+
+<h2>Soluciones y acciones</h2>
+<img src="https://picsum.photos/300/200?random=4" alt="Energía renovable solar" style="width: 300px; height: 200px; border-radius: 8px;">
+<p>
+Para combatir el cambio climático es necesario:
+</p>
+<ul style="margin-left: 20px; margin-bottom: 15px;">
+<li>Transición a energías renovables (solar, eólica, hidroeléctrica)</li>
+<li>Mejorar la eficiencia energética en edificios e industria</li>
+<li>Proteger y restaurar bosques</li>
+<li>Promover la agricultura sostenible</li>
+<li>Reducir el consumo de carne y productos de origen animal</li>
+<li>Usar transporte público y vehículos eléctricos</li>
+<li>Implementar políticas de adaptación climática</li>
+</ul>
+
+<hr>
+
+<h2>Pregúntame algo 🌱</h2>
+
+<img src="https://picsum.photos/150/150?random=5" alt="Asistente robot" style="width: 150px; height: 150px; border-radius: 50%; margin: 20px auto; display: block;">
+<p style="text-align: center; font-style: italic; color: #2e8b57; font-size: 18px; margin-bottom: 20px;">
+"¡Soy tu asistente! Pregúntame lo que quieras sobre el cambio climático."
+</p>
+
+<input type="text" id="pregunta" placeholder="Escribe tu pregunta...">
+<button onclick="enviarPregunta()">Enviar</button>
+<div id="loader" class="loader" style="display: none;">
+    <div class="spinner"></div>
+    <p>🤖 Pensando...</p>
+</div>
+
+<!-- Script para enviar la pregunta -->
+
+<p><strong>Respuesta:</strong></p>
+<p id="respuesta"></p>
+
+<script>
+function enviarPregunta() {
+    const pregunta = document.getElementById("pregunta").value;
+    const respuesta = document.getElementById("respuesta");
+    const loader = document.getElementById("loader");
+
+    if (!pregunta.trim()) return;
+
+    respuesta.innerText = "";
+    loader.style.display = "block"; // Mostrar el loader
+
+    // Simular tiempo de espera para mostrar el loader
+    setTimeout(() => {
+        fetch("/preguntar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ pregunta: pregunta })
+        })
+        .then(res => res.json())
+        .then(data => {
+            loader.style.display = "none";
+            // Mostrar la respuesta
+            document.getElementById("respuesta").innerText = data.respuesta;
+            
+        });
+    }, 1000);
+}
+</script>
+
+</body>
+</html>

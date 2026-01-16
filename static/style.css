@@ -1,0 +1,129 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #eaf6f0;
+    color: #2c3e50;
+    padding: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+
+body > * {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1 {
+    color: #2e8b57;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+h2 {
+    color: #3cb371;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: #cfd8dc;
+    margin: 25px 0;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #b0bec5;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+button {
+    background-color: #2e8b57;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto 15px auto;
+}
+
+button:hover {
+    background-color: #256d46;
+}
+
+#respuesta {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 5px;
+    border-left: 4px solid #2e8b57;
+    min-height: 40px;
+}
+
+/* Estilos para imágenes flotantes */
+img[alt="Tierra y cambio climático"],
+img[alt="Emisiones de CO2 de una fábrica"],
+img[alt="Glaciar derritiéndose"],
+img[alt="Energía renovable solar"] {
+    float: right;
+    width: 300px;
+    max-width: 100%;
+    margin: 0 0 15px 20px;
+}
+
+@media (max-width: 768px) {
+    img[alt="Tierra y cambio climático"],
+    img[alt="Emisiones de CO2 de una fábrica"],
+    img[alt="Glaciar derritiéndose"],
+    img[alt="Energía renovable solar"] {
+        float: none;
+        width: 100%;
+        margin: 15px 0;
+    }
+}
+
+.loader {
+    text-align: center;
+    margin: 20px 0;
+    color: #2e8b57;
+    font-style: italic;
+    animation: fadeIn 0.3s ease-in;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 6px solid #c8e6c9;
+    border-top: 6px solid #2e8b57;
+    border-radius: 50%;
+    margin: 0 auto 10px auto;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

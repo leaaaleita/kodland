@@ -4,7 +4,7 @@ from groq import Groq
 app = Flask(__name__)
 
 # Cliente de IA (Groq)
-client = Groq(api_key="Groq_API_Key")
+client = Groq(api_key="Tu_API")
 
 
 @app.route("/")
@@ -17,9 +17,7 @@ def preguntar():
     data = request.get_json()
     pregunta = data.get("pregunta", "").lower()
 
-    # =========================
-    # RESPUESTAS PREDEFINIDAS
-    # =========================
+    # RESPUESTAS PREDEFINIDAS, respuestas dedicadas a palabars clave
     if "prevencion" in pregunta or "prevenir" in pregunta:
         return jsonify({
             "respuesta": "La prevención del cambio climático implica reducir las emisiones de gases de efecto invernadero, usar energías renovables y promover hábitos sostenibles."
@@ -50,9 +48,7 @@ def preguntar():
     })
 
 
-    # =========================
-    # SI NO COINCIDE → IA
-    # =========================
+    # SI NO LA TIENE, le preguntamos a la IA
     try:
         response = client.chat.completions.create(
             model="llama-3.1-8b-instant",
@@ -72,7 +68,7 @@ def preguntar():
         return jsonify({
             "respuesta": response.choices[0].message.content
         })
-
+    # POR SI FALLA
     except Exception as e:
         print("ERROR IA:", e)
         return jsonify({

@@ -4,7 +4,7 @@ from groq import Groq
 app = Flask(__name__)
 
 # Cliente de IA (Groq)
-client = Groq(api_key="Tu_API")
+client = Groq(api_key="tu_api_key")
 
 
 @app.route("/")
@@ -41,6 +41,8 @@ def preguntar():
     elif "definicion" in pregunta or "qué es" in pregunta or "que es" in pregunta:
         return jsonify({
             "respuesta": "El cambio climático es la alteración a largo plazo del clima del planeta, causada principalmente por la actividad humana."
+            "<a href='https://youtu.be/ZSl4BePAqAg?si=2-BJYlLLTKscJgl_' target='_blank'>"
+            "▶ Ver video explicativo</a>"
         })
     elif "pais" in pregunta and "contamin" in pregunta:
         return jsonify({

@@ -15,7 +15,7 @@ El sistema responde de dos formas:
 Tecnologías utilizadas:
 - Python
 - Flask
-- HTML, CSS y JavaScript(un poquito)
+- HTML, CSS 
 - API de Groq (LLM)
 
 Funcionalidades:
